@@ -1,4 +1,5 @@
-# neo4j-furb
+# Neo4J 
+
 Pós-DataScience - Neo4j
 
 ## Exercicíos 
@@ -148,6 +149,77 @@ m.title
 "Charlie Wilson's War"
 "That Thing You Do"
 "Joe Versus the Volcano"
+```
+
+Exercise 3.4: Retrieve information about the relationships Tom Hanks has with the set of movies retrieved earlier (Instructions)
+
+Modify the query that you just executed to return the type information about the relationships between Tom Hanks and the movies.
+
+```
+match(:Person {name: 'Tom Hanks'})-[rel]-(m:Movie) return m.title, type(rel)
+
+m.title	type(rel)
+"A League of Their Own"	"ACTED_IN"
+"Cloud Atlas"	"ACTED_IN"
+"The Da Vinci Code"	"ACTED_IN"
+"Sleepless in Seattle"	"ACTED_IN"
+"The Polar Express"	"ACTED_IN"
+"The Green Mile"	"ACTED_IN"
+"Cast Away"	"ACTED_IN"
+
+```
+
+Exercise 3.5: Retrieve information about the roles that Tom Hanks acted in (Instructions)
+
+As an actor, a Person node in the database connects to a Movie node using the ACTED_IN relationship. One of the properties of the ACTED_IN relationship is roles.
+
+Retrieve information about the roles that Tom Hanks played.
+
+```
+match(:Person {name: 'Tom Hanks'})-[r:ACTED_IN]->(m:Movie) return m.title, r.roles
+
+m.title	r.roles
+"A League of Their Own"	["Jimmy Dugan"]
+"Cloud Atlas"	["Zachry", "Dr. Henry Goose", "Isaac Sachs", "Dermot Hoggins"]
+"The Da Vinci Code"	["Dr. Robert Langdon"]
+"Sleepless in Seattle"	["Sam Baldwin"]
+"The Polar Express"	["Hero Boy", "Father", "Conductor", "Hobo", "Scrooge", "Santa Claus"]
+"The Green Mile"	["Paul Edgecomb"]
+```
+Exercise 4.1: Retrieve all movies that Tom Cruise acted in (Instructions)
+
+Retrieve all movies that Tom Cruise acted in and return their titles.
+
+Hint: Use a WHERE clause.
+
+Hint: You must specify a variable for the Person and Movie nodes as they are used in the WHERE and RETURN clauses.
+
+```
+match (p:Person)-[:ACTED_IN]->(m:Movie) where p.name = 'Tom Cruise' return m.title
+m.title
+"Jerry Maguire"
+"Top Gun"
+"A Few Good Men"
+"Top Gun"
+"Jerry Maguire"
+"A Few Good Men"
+```
+Exercise 4.2: Retrieve all people that were born in the 70’s (Instructions)
+
+Retrieve all people that were born in the 70’s and return their names and year born.
+
+```
+match(p:Person) where p.born >=1970 and p.born < 1980 return p.name
+
+p.name
+"Emil Eifrem"
+"Charlize Theron"
+"Noah Wyle"
+"Jerry O'Connell"
+"Jay Mohr"
+"Regina King"
+"River Phoenix"
+"Corey Feldman"
 ```
 
 
