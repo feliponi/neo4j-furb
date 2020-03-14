@@ -453,8 +453,23 @@ p.name	p2.name
 "James Thompson"	"Paul Blythe"
 ```
 
+### Exercise 5.6: Specify optional data to be retrieved during the query (Instructions)
 
+Write a Cypher query to retrieve all people in the graph whose name begins with Tom and optionally retrieve all people named Tom who directed a movie.
 
+```
+match(p:Person) 
+where p.name starts with 'Tom'
+optional match(p)-[:DIRECTED]-(m:Movie)
+return p.name, m.title
+
+p.name	m.title
+"Tom Cruise"	null
+"Tom Skerritt"	null
+"Tom Hanks"	"That Thing You Do"
+"Tom Tykwer"	"Cloud Atlas"
+
+```
 
 
 ## Anotações
