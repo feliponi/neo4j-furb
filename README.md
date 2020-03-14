@@ -292,6 +292,36 @@ p.name	m.title	rel.rating
 "Jessica Thompson"	"The Replacements"	65
 ```
 
+Exercise 4.8: Retrieve all actors whose name begins with James (Instructions)
+
+Next you will practice queries that test string properties.
+
+Retrieve all actors whose name begins with James, returning their names.
+
+```
+match(p:Person) where p.name starts with 'James' return p.name
+p.name
+"James Marshall"
+"James L. Brooks"
+"James Cromwell"
+"James Thompson"
+```
+Exercise 4.9: Retrieve all REVIEWED relationships from the graph with filtered results (Instructions)
+
+Retrieve all REVIEWED relationships from the graph where the summary of the review contains the string fun, returning the movie title reviewed and the rating and summary of the relationship.
+
+Hint: You do not know what case the fun string will be in the summary text.
+
+```
+match(p:Person)-[rel:REVIEWED]-(m:Movie) where rel.summary contains 'fun' return m.title, rel.rating, rel.summary
+
+m.title	rel.rating	rel.summary
+"The Replacements"	62	"Pretty funny at times"
+"The Replacements"	65	"Silly, but fun"
+"The Replacements"	62	"Pretty funny at times"
+"The Replacements"	65	"Silly, but fun"
+```
+
 
 
 
