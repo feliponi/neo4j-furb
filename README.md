@@ -592,6 +592,35 @@ return p, rel, m
 ```
 ![Nodes](/WhatsApp%20Image%202020-03-14%20at%2014.33.14.jpeg)
 
+### Exercise 9.5: Add properties to relationships (Instructions)
+
+Next, you will add some properties to the relationships that you just created.
+
+Add the roles property to the three ACTED_IN relationships that you just created to the movie, Forrest Gump using this information: Tom Hanks played the role, Forrest Gump. Robin Wright played the role, Jenny Curran. Gary Sinise played the role, Lieutenant Dan Taylor.
+
+Hint: You can set each relationship using separate MATCH clauses. You can also use a CASE clause to set the values. Look up in the documentation for how to use the CASE clause.
+
+```
+match (p:Person)-[rel:ACTED_IN]->(m:Movie)
+where m.title = 'Forrest Gump'
+Set rel.roles =
+case p.name
+	when 'Tom Hanks' then ['Forrest Gump']
+    when 'Robin Wright' then ['Jenny Curran']
+    when 'Gary Sinise' then ['Lieutenant Dan Taylor']
+end
+```
+
+### Exercise 9.6: Add a property to the HELPED relationship (Instructions)
+
+Add a new property, research to the HELPED relationship between Tom Hanks and Gary Sinise and set this property’s value to war history.
+
+```
+match (p1:Person)-[r:HELPED]->(p2:Person)
+where p1.name = 'Tom Hanks' and p2.name = 'Gary Sinise'
+set r.research = 'war history'
+```
+
 ## Anotações
 
 Todos os atores que performaram o papel de 'Neo' em todos os filmes do database
