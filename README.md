@@ -253,6 +253,47 @@ m.title
 
 ```
 
+Exercise 4.5: Retrieve all people that wrote movies by testing the relationship between two nodes (Instructions)
+
+Retrieve all people that wrote movies by testing the relationship between two nodes, returning the names of the people and the titles of the movies.
+
+```
+match(p:Person)-[rel]-(m:Movie) where type(rel) = 'WROTE'  return m.title, p.name
+````
+
+Exercise 4.6: Retrieve all people in the graph that do not have a property (Instructions)
+
+You will write Cypher queries using a WHERE clause to test existence.
+
+Retrieve all people in the graph that do not have a born property, returning their names.
+
+```
+match(p:Person) where not exists(p.born) return p.name
+
+p.name
+"Naomie Harris"
+"Paul Blythe"
+"Angela Scope"
+```
+
+Exercise 4.7: Retrieve all people related to movies where the relationship has a property (Instructions)
+
+You will write Cypher queries using a WHERE clause to test existence.
+
+Retrieve all people related to movies where the relationship has the rating property, then return their name, movie title, and the rating.
+
+```
+match(p:Person)-[rel]-(m:Movie) where exists(rel.rating) return p.name, m.title, rel.rating
+
+p.name	m.title	rel.rating
+"Jessica Thompson"	"Jerry Maguire"	92
+"Angela Scope"	"The Replacements"	62
+"James Thompson"	"The Replacements"	100
+"Jessica Thompson"	"The Replacements"	65
+```
+
+
+
 
 ## Anotações
 
