@@ -114,5 +114,14 @@ Todos os atores que performaram o papel de 'Neo' em todos os filmes do database
 
 ```
 match (p)-[r:ACTED_IN]->(m) where p:Person and 'Neo' in r.roles and m:Movie return p.name, m.title
+
+p.name	m.title
+"Keanu Reeves"	"The Matrix"
+"Keanu Reeves"	"The Matrix Reloaded"
+"Keanu Reeves"	"The Matrix Revolutions"
+"Keanu Reeves"	"The Matrix"
+"Keanu Reeves"	"The Matrix Reloaded"
+"Keanu Reeves"	"The Matrix Revolutions"
+
 ```
 O relacionamento ACTED_IN também possui propriedades. Uma delas é o Roles.
