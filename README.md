@@ -284,13 +284,14 @@ Retrieve all people related to movies where the relationship has the rating prop
 
 ```
 match(p:Person)-[rel]-(m:Movie) where exists(rel.rating) return p.name, m.title, rel.rating
-
-p.name	m.title	rel.rating
-"Jessica Thompson"	"Jerry Maguire"	92
-"Angela Scope"	"The Replacements"	62
-"James Thompson"	"The Replacements"	100
-"Jessica Thompson"	"The Replacements"	65
 ```
+p.name	| m.title |	rel.rating
+--------|---------|----------------
+"Jessica Thompson" |	"Jerry Maguire" |	92
+"Angela Scope" |	"The Replacements" |	62
+"James Thompson" |	"The Replacements" |	100
+"Jessica Thompson" |	"The Replacements" |	65
+
 
 ### Exercise 4.8: Retrieve all actors whose name begins with James (Instructions)
 
