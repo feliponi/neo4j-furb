@@ -590,7 +590,7 @@ match (p:Person)-[rel]-(m:Movie)
 where m.title = 'Forrest Gump'
 return p, rel, m
 ```
-
+![Nodes](/WhatsApp%20Image%202020-03-14%20at%2014.33.14.jpeg)
 
 ## Anotações
 
