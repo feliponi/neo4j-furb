@@ -372,6 +372,21 @@ m.title	m.released
 Retrieve the movies that have an actor’s role that is the name of the movie, return the movie title and the role.
 
 
+```
+match(p:Person)-[r:ACTED_IN]->(m:Movie) where m.title in r.roles return m.title, r.roles
+
+m.title	r.roles
+"Jerry Maguire"	["Jerry Maguire"]
+"Johnny Mnemonic"	["Johnny Mnemonic"]
+"Speed Racer"	["Speed Racer"]
+"Hoffa"	["Hoffa"]
+```
+### Exercise 5.1: Retrieve data using multiple MATCH patterns (Instructions)
+
+Write a Cypher query that retrieves all movies that Gene Hackman has acted it, along with the directors of the movies. In addition, retrieve the actors that acted in the same movies as Gene Hackman. Return the name of the movie, the name of the director, and the names of actors that worked with Gene Hackman.
+
+
+
 ## Anotações
 
 Todos os atores que performaram o papel de 'Neo' em todos os filmes do database
