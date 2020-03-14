@@ -322,6 +322,34 @@ m.title	rel.rating	rel.summary
 "The Replacements"	65	"Silly, but fun"
 ```
 
+Exercise 4.10: Retrieve all people who have produced a movie, but have not directed a movie (Instructions)
+
+Next, you will write queries that test patterns.
+
+Retrieve all people who have produced a movie, but have not directed a movie, returning their names and the movie titles.
+
+```
+match(p:Person)-[pr:PRODUCED]->(m:Movie) where not ((p)-[:DIRECTED]-(:Movie)) return p.name, m.title
+
+p.name	m.title
+"Joel Silver"	"The Matrix"
+"Joel Silver"	"The Matrix Reloaded"
+"Joel Silver"	"The Matrix Revolutions"
+"Stefan Arndt"	"Cloud Atlas"
+```
+Exercise 4.11: Retrieve the movies and their actors where one of the actors also directed the movie (Instructions)
+
+Retrieve the movies and their actors where one of the actors also directed the movie, returning the actors names, the director’s name, and the movie title.
+
+```
+match(p:Person)-[rel]->(m:Movie) where ((p)-[:DIRECTED]-(:Movie)) and ((p)-[:ACTED_IN]-(:Movie)) return p.name, m.title
+
+p.name	m.title
+"James Marshall"	"Ninja Assassin"
+"James Marshall"	"A Few Good Men"
+"James Marshall"	"V for Vendetta"
+"Werner Herzog"	"RescueDawn"
+```
 
 
 
