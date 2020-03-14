@@ -108,6 +108,49 @@ match (m:Movie) return m.title as 'Movie Title', m.released as 'Released', m.tag
 
 ```
 
+Exercise 3.1: Display the schema of the database (Instructions)
+
+You will use schema information to help you specify relationships in your queries.
+
+Display the schema of the database.
+
+```
+call db.schema.visualization()
+```
+Exercise 3.2: Retrieve all people who wrote the movie Speed Racer (Instructions)
+
+Retrieve all people who wrote the movie Speed Racer.
+```
+match(p:Person)-[:WROTE]->(:Movie {title: 'Speed Racer'}) return p.name
+p.name
+"Lana Wachowski"
+"Lilly Wachowski"
+"Lilly Wachowski"
+"Lana Wachowski"
+```
+Exercise 3.3: Retrieve all movies that are connected to the person, Tom Hanks (Instructions)
+
+Retrieve all movies connected with Tom Hanks.
+
+Hint: Tom Hanks has multiple relationships with a movie so you should not specify a relationship type in the query.
+
+```
+match(:Person {name: 'Tom Hanks'})-[:ACTED_IN]->(m:Movie) return m.title
+
+m.title
+"A League of Their Own"
+"Cloud Atlas"
+"The Da Vinci Code"
+"Sleepless in Seattle"
+"The Polar Express"
+"The Green Mile"
+"Cast Away"
+"Charlie Wilson's War"
+"That Thing You Do"
+"Joe Versus the Volcano"
+```
+
+
 ## Anotações
 
 Todos os atores que performaram o papel de 'Neo' em todos os filmes do database
@@ -125,3 +168,4 @@ p.name	m.title
 
 ```
 O relacionamento ACTED_IN também possui propriedades. Uma delas é o Roles.
+
