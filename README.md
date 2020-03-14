@@ -470,7 +470,48 @@ p.name	m.title
 "Tom Tykwer"	"Cloud Atlas"
 
 ```
+### Exercise 8.1: Create a Movie node (Instructions)
 
+Create a Movie node for the movie with the title, Forrest Gump.
+
+```
+create (:Movie {title: 'Forrest Gump'})
+```
+
+### Exercise 8.2: Retrieve the newly-created node (Instructions)
+
+Retrieve the node you just created by its title.
+
+```
+match (m:Movie {title: 'Forrest Gump'}) return m
+```
+### Exercise 8.3: Create a Person node (Instructions)
+
+Create a Person node for the person with the name, Robin Wright.
+
+```
+create (:Person {name: 'Robin Wright'})
+```
+
+### Exercise 8.5: Add a label to a node (Instructions)
+
+Add the label OlderMovie to any Movie node that was released before 2010.
+
+```
+match (m:Movie)
+where m.released < 2010
+set m:OlderMovie
+return distinct labels(m)
+```
+
+### Exercise 8.6: Retrieve the node using the new label (Instructions)
+
+Retrieve all older movie nodes to test that the label was indeed added to these nodes.
+
+```
+match (m:OlderMovie)
+return m.title, m.released
+```
 
 ## Anotações
 
