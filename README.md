@@ -9,18 +9,18 @@ Exercise 1.1: Retrieve all nodes from the database (Instructions)
 MATCH (n) return n
 ```
 
-Exercise 1.2: Examine the data model of the graph (Instructions)
+### Exercise 1.2: Examine the data model of the graph (Instructions)
 
 ```
 call db.schema.visualization()
 ```
-Exercise 1.3: Retrieve all Person nodes (Instructions)
+### Exercise 1.3: Retrieve all Person nodes (Instructions)
 
 ```
 match (p:Person) return p
 ```
 
-Exercise 1.4: Retrieve all Movie nodes (Instructions)
+### ### Exercise 1.4: Retrieve all Movie nodes (Instructions)
 
 ```
 match (m:Movie) return m
@@ -33,7 +33,7 @@ Retrieve all Movie nodes that have a released property value of 2003.
 match (m:Movie) where m.released = 2003 return m
 ```
 
-Exercise 2.2: View the retrieved results as a table (Instructions)
+### Exercise 2.2: View the retrieved results as a table (Instructions)
 View the results you just viewed in Neo4j Browser as a table.
 
 ```
@@ -53,7 +53,7 @@ m
 
 ```
 
-Exercise 2.3: Query the database for all property keys (Instructions)
+### Exercise 2.3: Query the database for all property keys (Instructions)
 
 You want to know the existing property keys used in a graph. This will help you to write Cypher queries that utilizes property keys for filtering data or for returning data.
 
@@ -72,7 +72,7 @@ propertyKey
 "summary"
 "rating"
 ```
-Exercise 2.4: Retrieve all Movies released in a specific year, returning their titles (Instructions)
+### Exercise 2.4: Retrieve all Movies released in a specific year, returning their titles (Instructions)
 
 Rather than returning the nodes that satisfy a query, you want to return data from the nodes.
 
@@ -90,7 +90,7 @@ m.title
 "V for Vendetta"
 ```
 
-Exercise 2.5: Display title, released, and tagline values for every Movie node in the graph (Instructions)
+### Exercise 2.5: Display title, released, and tagline values for every Movie node in the graph (Instructions)
 
 When you start working with a graph, it is sometimes helpful to simply view property values. This can sometimes help to inform you about future queries you may want to execute against the graph.
 
@@ -100,7 +100,7 @@ Retrieve all Movie nodes from the database and return the title, released, and t
 match (m:Movie) return m.title, m.tagline
 ```
 
-Exercise 2.6: Display more user-friendly headers in the table (Instructions)
+### Exercise 2.6: Display more user-friendly headers in the table (Instructions)
 
 Modify the query you just ran so that the headings for the columns of the table returned are more descriptive.
 
@@ -109,7 +109,7 @@ match (m:Movie) return m.title as 'Movie Title', m.released as 'Released', m.tag
 
 ```
 
-Exercise 3.1: Display the schema of the database (Instructions)
+### Exercise 3.1: Display the schema of the database (Instructions)
 
 You will use schema information to help you specify relationships in your queries.
 
@@ -118,7 +118,7 @@ Display the schema of the database.
 ```
 call db.schema.visualization()
 ```
-Exercise 3.2: Retrieve all people who wrote the movie Speed Racer (Instructions)
+### Exercise 3.2: Retrieve all people who wrote the movie Speed Racer (Instructions)
 
 Retrieve all people who wrote the movie Speed Racer.
 ```
@@ -129,7 +129,7 @@ p.name
 "Lilly Wachowski"
 "Lana Wachowski"
 ```
-Exercise 3.3: Retrieve all movies that are connected to the person, Tom Hanks (Instructions)
+### Exercise 3.3: Retrieve all movies that are connected to the person, Tom Hanks (Instructions)
 
 Retrieve all movies connected with Tom Hanks.
 
@@ -151,7 +151,7 @@ m.title
 "Joe Versus the Volcano"
 ```
 
-Exercise 3.4: Retrieve information about the relationships Tom Hanks has with the set of movies retrieved earlier (Instructions)
+### Exercise 3.4: Retrieve information about the relationships Tom Hanks has with the set of movies retrieved earlier (Instructions)
 
 Modify the query that you just executed to return the type information about the relationships between Tom Hanks and the movies.
 
@@ -169,7 +169,7 @@ m.title	type(rel)
 
 ```
 
-Exercise 3.5: Retrieve information about the roles that Tom Hanks acted in (Instructions)
+### Exercise 3.5: Retrieve information about the roles that Tom Hanks acted in (Instructions)
 
 As an actor, a Person node in the database connects to a Movie node using the ACTED_IN relationship. One of the properties of the ACTED_IN relationship is roles.
 
@@ -186,7 +186,7 @@ m.title	r.roles
 "The Polar Express"	["Hero Boy", "Father", "Conductor", "Hobo", "Scrooge", "Santa Claus"]
 "The Green Mile"	["Paul Edgecomb"]
 ```
-Exercise 4.1: Retrieve all movies that Tom Cruise acted in (Instructions)
+### Exercise 4.1: Retrieve all movies that Tom Cruise acted in (Instructions)
 
 Retrieve all movies that Tom Cruise acted in and return their titles.
 
@@ -204,7 +204,7 @@ m.title
 "Jerry Maguire"
 "A Few Good Men"
 ```
-Exercise 4.2: Retrieve all people that were born in the 70’s (Instructions)
+### Exercise 4.2: Retrieve all people that were born in the 70’s (Instructions)
 
 Retrieve all people that were born in the 70’s and return their names and year born.
 
@@ -221,7 +221,7 @@ p.name
 "River Phoenix"
 "Corey Feldman"
 ```
-Exercise 4.3: Retrieve the actors who acted in the movie The Matrix who were born after 1960 (Instructions)
+### Exercise 4.3: Retrieve the actors who acted in the movie The Matrix who were born after 1960 (Instructions)
 
 Retrieve the actors who acted in the movie The Matrix who were born after 1960, and return their names and year born.
 
@@ -239,7 +239,7 @@ p.name
 "Emil Eifrem"
 "Laurence Fishburne"
 ```
-Exercise 4.4: Retrieve all movies by testing the node label and a property (Instructions)
+### Exercise 4.4: Retrieve all movies by testing the node label and a property (Instructions)
 
 Retrieve all movies released in 2000 by testing the node label and the released property, returning the movie titles.
 
@@ -253,7 +253,7 @@ m.title
 
 ```
 
-Exercise 4.5: Retrieve all people that wrote movies by testing the relationship between two nodes (Instructions)
+### Exercise 4.5: Retrieve all people that wrote movies by testing the relationship between two nodes (Instructions)
 
 Retrieve all people that wrote movies by testing the relationship between two nodes, returning the names of the people and the titles of the movies.
 
@@ -261,7 +261,7 @@ Retrieve all people that wrote movies by testing the relationship between two no
 match(p:Person)-[rel]-(m:Movie) where type(rel) = 'WROTE'  return m.title, p.name
 ````
 
-Exercise 4.6: Retrieve all people in the graph that do not have a property (Instructions)
+### Exercise 4.6: Retrieve all people in the graph that do not have a property (Instructions)
 
 You will write Cypher queries using a WHERE clause to test existence.
 
@@ -276,7 +276,7 @@ p.name
 "Angela Scope"
 ```
 
-Exercise 4.7: Retrieve all people related to movies where the relationship has a property (Instructions)
+### Exercise 4.7: Retrieve all people related to movies where the relationship has a property (Instructions)
 
 You will write Cypher queries using a WHERE clause to test existence.
 
@@ -292,7 +292,7 @@ p.name	m.title	rel.rating
 "Jessica Thompson"	"The Replacements"	65
 ```
 
-Exercise 4.8: Retrieve all actors whose name begins with James (Instructions)
+### Exercise 4.8: Retrieve all actors whose name begins with James (Instructions)
 
 Next you will practice queries that test string properties.
 
@@ -306,7 +306,7 @@ p.name
 "James Cromwell"
 "James Thompson"
 ```
-Exercise 4.9: Retrieve all REVIEWED relationships from the graph with filtered results (Instructions)
+### Exercise 4.9: Retrieve all REVIEWED relationships from the graph with filtered results (Instructions)
 
 Retrieve all REVIEWED relationships from the graph where the summary of the review contains the string fun, returning the movie title reviewed and the rating and summary of the relationship.
 
@@ -322,7 +322,7 @@ m.title	rel.rating	rel.summary
 "The Replacements"	65	"Silly, but fun"
 ```
 
-Exercise 4.10: Retrieve all people who have produced a movie, but have not directed a movie (Instructions)
+### Exercise 4.10: Retrieve all people who have produced a movie, but have not directed a movie (Instructions)
 
 Next, you will write queries that test patterns.
 
@@ -337,7 +337,7 @@ p.name	m.title
 "Joel Silver"	"The Matrix Revolutions"
 "Stefan Arndt"	"Cloud Atlas"
 ```
-Exercise 4.11: Retrieve the movies and their actors where one of the actors also directed the movie (Instructions)
+### Exercise 4.11: Retrieve the movies and their actors where one of the actors also directed the movie (Instructions)
 
 Retrieve the movies and their actors where one of the actors also directed the movie, returning the actors names, the director’s name, and the movie title.
 
@@ -351,6 +351,25 @@ p.name	m.title
 "Werner Herzog"	"RescueDawn"
 ```
 
+### Exercise 4.12: Retrieve all movies that were released in a set of years (Instructions)
+
+Next you will perform queries using lists.
+
+Retrieve all movies that were released in the years 2000, 2004, and 2008, returning their titles and release years.
+```
+MATCH (m:Movie)
+WHERE m.released in [2000, 2004, 2008]
+RETURN m.title, m.released
+
+m.title	m.released
+"Jerry Maguire"	2000
+"The Replacements"	2000
+"Speed Racer"	2008
+```
+
+### Exercise 4.13: Retrieve the movies that have an actor’s role that is the name of the movie (Instructions)
+
+Retrieve the movies that have an actor’s role that is the name of the movie, return the movie title and the role.
 
 
 ## Anotações
