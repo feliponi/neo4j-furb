@@ -385,6 +385,76 @@ m.title	r.roles
 
 Write a Cypher query that retrieves all movies that Gene Hackman has acted it, along with the directors of the movies. In addition, retrieve the actors that acted in the same movies as Gene Hackman. Return the name of the movie, the name of the director, and the names of actors that worked with Gene Hackman.
 
+```
+match(p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p2:Person), 
+(p3:Person)-[:ACTED_IN]->(m) where p.name = 'Gene Hackman'
+return m.title as Movie, p2.name as Director, p3.name As CoActors
+
+Movie	Director	CoActors
+"The Birdcage"	"Mike Nichols"	"Robin Williams"
+"The Birdcage"	"Mike Nichols"	"Nathan Lane"
+"The Replacements"	"Howard Deutch"	"Keanu Reeves"
+"The Replacements"	"Howard Deutch"	"Orlando Jones"
+"The Replacements"	"Howard Deutch"	"Brooke Langton"
+"Unforgiven"	"Clint Eastwood"	"Richard Harris"
+"Unforgiven"	"Clint Eastwood"	"Clint Eastwood"
+"Unforgiven"	"Clint Eastwood"	"Clint Eastwood"
+"Unforgiven"	"Clint Eastwood"	"Richard Harris"
+```
+### Exercise 5.2: Retrieve particular nodes that have a relationship (Instructions)
+
+Next, you will perform queries for data that is a variable number of hops away.
+
+Write this Cypher query to explore the graph engine’s behavior with varying length paths for the FOLLOWS relationship in the Movie graph:
+
+Retrieve all nodes that the person named James Thompson directly has the FOLLOWS relationship in either direction.
+
+```
+match(p:Person)-[r:FOLLOWS]-(p2:Person)
+where p.name = 'James Thompson'
+return  p, p2
+```
+
+### Exercise 5.3: Modify the query to retrieve nodes that are exactly three hops away (Instructions)
+
+Modify the query to retrieve nodes that are exactly three hops away.
+
+```
+match(p:Person)-[r:FOLLOWS*3]-(p2:Person)
+where p.name = 'James Thompson'
+return p, p2
+```
+### Exercise 5.4: Modify the query to retrieve nodes that are one and two hops away (Instructions)
+
+Modify the query to retrieve nodes that are one and two hops away.
+
+```
+match(p:Person)-[r:FOLLOWS*1..2]-(p2:Person)
+where p.name = 'James Thompson'
+return p, p2
+
+```
+
+### Exercise 5.5: Modify the query to retrieve particular nodes that are connected no matter how many hops are required (Instructions)
+
+Modify the query to retrieve all nodes that are connected to James Thompson by a Follows relationship no matter how many hops are required.
+
+```
+match(p:Person)-[r:FOLLOWS*]-(p2:Person)
+where p.name = 'James Thompson'
+return p, p2
+
+p.name	p2.name
+"James Thompson"	"Jessica Thompson"
+"James Thompson"	"Angela Scope"
+"James Thompson"	"Paul Blythe"
+"James Thompson"	"Jessica Thompson"
+"James Thompson"	"Angela Scope"
+"James Thompson"	"Paul Blythe"
+```
+
+
+
 
 
 ## Anotações
