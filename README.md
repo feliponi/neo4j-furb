@@ -512,6 +512,85 @@ Retrieve all older movie nodes to test that the label was indeed added to these 
 match (m:OlderMovie)
 return m.title, m.released
 ```
+### Exercise 8.11: Add properties to a movie (Instructions)
+
+Add the following properties to the movie, Forrest Gump:
+
+released: 1994
+
+tagline: Life is like a box of chocolates…​you never know what you’re gonna get.
+
+lengthInMinutes: 142
+
+Hint: This movie should also have the label OlderMovie.
+
+```
+MATCH (m:Movie)
+WHERE m.title = 'Forrest Gump'
+SET m:OlderMovie,
+    m.released = 1994,
+    m.tagline = "Life is like a box of chocolates...you never know what you're gonna get.",
+    m.lengthInMinutes = 142
+```
+### Exercise 8.13: Add properties to the person, Robin Wright (Instructions)
+
+Add the following properties to the person, Robin Wright:
+
+born: 1966
+
+birthPlace: Dallas
+
+```
+MATCH (p:Person)
+WHERE p.name = 'Robin Wright'
+SET p.born = 1966, p.birthPlace = 'Dallas'
+```
+
+### Exercise 9.1: Create ACTED_IN relationships (Instructions)
+
+In the last exercise, you created the node for the movie, Forrest Gump and the person, Robin Wright.
+
+Create the ACTED_IN relationship between the actors, Robin Wright, Tom Hanks, and Gary Sinise and the movie, Forrest Gump.
+
+```
+match (m:Movie)
+where m.title = 'Forrest Gump'
+match (p:Person)
+where p.name = 'Tom Hanks' or p.name = 'Robin Wright' or p.name = 'Gary Sinise'
+create (p)-[:ACTED_IN]->(m)
+```
+
+### Exercise 9.2: Create DIRECTED relationships (Instructions)
+
+Create the DIRECTED relationship between Robert Zemeckis and the movie, Forrest Gump.
+```
+match (m:Movie)
+where m.title = 'Forrest Gump'
+match (p:Person)
+where p.name = 'Robert Zemeckis'
+create (p)-[:DIRECTED]->(m)
+```
+
+### Exercise 9.3: Create a HELPED relationship (Instructions)
+
+Create a new relationship, HELPED from Tom Hanks to Gary Sinise.
+
+```
+match (p:Person)
+where p.name = 'Tom Hanks'
+match (p2:Person)
+where p2.name = 'Gary Sinise'
+create (p)-[:HELPED]->(p2)
+```
+### Exercise 9.4: Query nodes and new relationships (Instructions)
+
+Write a Cypher query to return all nodes connected to the movie, Forrest Gump, along with their relationships.
+```
+match (p:Person)-[rel]-(m:Movie)
+where m.title = 'Forrest Gump'
+return p, rel, m
+```
+
 
 ## Anotações
 
