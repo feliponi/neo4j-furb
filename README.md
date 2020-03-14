@@ -221,6 +221,37 @@ p.name
 "River Phoenix"
 "Corey Feldman"
 ```
+Exercise 4.3: Retrieve the actors who acted in the movie The Matrix who were born after 1960 (Instructions)
+
+Retrieve the actors who acted in the movie The Matrix who were born after 1960, and return their names and year born.
+
+```
+match(p:Person)-[:ACTED_IN]->(m:Movie) where m.title = 'The Matrix' and p.born >=1960 return p.name
+
+p.name
+"Emil Eifrem"
+"Laurence Fishburne"
+"Hugo Weaving"
+"Carrie-Anne Moss"
+"Keanu Reeves"
+"Hugo Weaving"
+"Keanu Reeves"
+"Emil Eifrem"
+"Laurence Fishburne"
+```
+Exercise 4.4: Retrieve all movies by testing the node label and a property (Instructions)
+
+Retrieve all movies released in 2000 by testing the node label and the released property, returning the movie titles.
+
+```
+match(m) where m:Movie and  m.released = 2000 return m.title
+m.title
+"Jerry Maguire"
+"The Replacements"
+"Cast Away"
+"Jerry Maguire"
+
+```
 
 
 ## Anotações
