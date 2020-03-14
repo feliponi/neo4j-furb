@@ -107,3 +107,12 @@ Modify the query you just ran so that the headings for the columns of the table 
 match (m:Movie) return m.title as 'Movie Title', m.released as 'Released', m.tagline as 'Tag Line'
 
 ```
+
+## Anotações
+
+Todos os atores que performaram o papel de 'Neo' em todos os filmes do database
+
+```
+match (p)-[r:ACTED_IN]->(m) where p:Person and 'Neo' in r.roles and m:Movie return p.name, m.title
+```
+O relacionamento ACTED_IN também possui propriedades. Uma delas é o Roles.
