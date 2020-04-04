@@ -20,7 +20,7 @@ call db.schema.visualization()
 match (p:Person) return p
 ```
 
-### ### Exercise 1.4: Retrieve all Movie nodes (Instructions)
+### Exercise 1.4: Retrieve all Movie nodes (Instructions)
 
 ```
 match (m:Movie) return m
@@ -624,7 +624,7 @@ set r.research = 'war history'
 
 
 
-#### Exercise 9.7: View the current list of property keys in the graph
+### Exercise 9.7: View the current list of property keys in the graph
 
 View the current list of property keys in the graph.
 
@@ -632,7 +632,7 @@ View the current list of property keys in the graph.
 call db.propertyKeys
 ```
 
-#### Exercise 9.8: View the current schema of the graph
+### Exercise 9.8: View the current schema of the graph
 
 View the current schema of the graph.
 
@@ -640,7 +640,7 @@ View the current schema of the graph.
 call db.schema.visualization
 ```
 
-#### Exercise 9.9: Retrieve the names and roles for actors
+### Exercise 9.9: Retrieve the names and roles for actors
 
 Query the graph to return the names and roles of actors in the movie, Forrest Gump.
 
@@ -648,7 +648,7 @@ Query the graph to return the names and roles of actors in the movie, Forrest Gu
 MATCH (p:Person)-[rel:ACTED_IN]->(m:Movie) WHERE m.title = 'Forrest Gump' RETURN p.name, rel.roles
 ```
 
-#### Exercise 9.10: Retrieve information about any specific relationships
+### Exercise 9.10: Retrieve information about any specific relationships
 
 Query the graph to retrieve information about any HELPED relationships.
 
@@ -656,7 +656,7 @@ Query the graph to retrieve information about any HELPED relationships.
 MATCH (p1:Person)-[rel:HELPED]-(p2:Person) RETURN p1.name, rel, p2.name
 ```
 
-#### Exercise 9.11: Modify a property of a relationship
+### Exercise 9.11: Modify a property of a relationship
 
 Next, you will modify existing properties for a relationship and also remove them.
 
@@ -666,7 +666,7 @@ Modify the role that Gary Sinise played in the movie, Forrest Gump from Lieutena
 MATCH (p:Person)-[rel:ACTED_IN]->(m:Movie) WHERE m.title = 'Forrest Gump' AND p.name = 'Gary Sinise' SET rel.roles =['Lt. Dan Taylor']
 ```
 
-#### Exercise 9.12: Remove a property from a relationship
+### Exercise 9.12: Remove a property from a relationship
 
 Remove the research property from the HELPED relationship from Tom Hanks to Gary Sinise.
 
@@ -674,7 +674,7 @@ Remove the research property from the HELPED relationship from Tom Hanks to Gary
 MATCH (p1:Person)-[rel:HELPED]->(p2:Person) WHERE p1.name = 'Tom Hanks' AND p2.name = 'Gary Sinise' REMOVE rel.research
 ```
 
-#### Exercise 9.13: Confirm that your modifications were made to the graph
+### Exercise 9.13: Confirm that your modifications were made to the graph
 
 Query the graph to confirm that your modifications were made to the graph.
 
@@ -682,7 +682,7 @@ Query the graph to confirm that your modifications were made to the graph.
 MATCH (p:Person)-[rel:ACTED_IN]->(m:Movie) WHERE m.title = 'Forrest Gump' return p, rel, m
 ```
 
-#### Exercise 10.1: Delete a relationship
+### Exercise 10.1: Delete a relationship
 
 Recall that in the graph we have been working with, we have the HELPED relationship between Tom Hanks and Gary Sinise. We have decided that we no longer need this relationship in the graph.
 
@@ -692,7 +692,7 @@ Delete the HELPED relationship from the graph.
 MATCH (:Person)-[rel:HELPED]-(:Person) DELETE rel
 ```
 
-#### Exercise 10.2: Confirm that the relationship has been deleted
+### Exercise 10.2: Confirm that the relationship has been deleted
 
 Query the graph to confirm that the relationship no longer exists.
 
@@ -700,7 +700,7 @@ Query the graph to confirm that the relationship no longer exists.
 MATCH (:Person)-[rel:HELPED]-(:Person) RETURN rel
 ```
 
-#### Exercise 10.3: Retrieve a movie and all of its relationships
+### Exercise 10.3: Retrieve a movie and all of its relationships
 
 Query the graph to display Forrest Gump and all of its relationships.
 
@@ -708,7 +708,7 @@ Query the graph to display Forrest Gump and all of its relationships.
 MATCH (p:Person)-[rel]-(m:Movie) WHERE m.title = 'Forrest Gump' RETURN p, rel, m
 ```
 
-#### Exercise 10.4: Try deleting a node without detaching its relationships
+### Exercise 10.4: Try deleting a node without detaching its relationships
 
 We want to remove the movie, Forrest Gump from the graph.
 
@@ -722,7 +722,7 @@ erro
 Cannot delete node<513>, because it still has relationships. To delete this node, you must first delete its relationships.
 ```
 
-#### Exercise 10.5: Delete a Movie node, along with its relationships
+### Exercise 10.5: Delete a Movie node, along with its relationships
 
 Delete Forrest Gump, along with its relationships in the graph.
 
@@ -730,7 +730,7 @@ Delete Forrest Gump, along with its relationships in the graph.
 MATCH (m:Movie) WHERE m.title = 'Forrest Gump' DETACH DELETE m
 ```
 
-#### Exercise 10.6: Confirm that the Movie node has been deleted
+### Exercise 10.6: Confirm that the Movie node has been deleted
 
 Query the graph to confirm that the Forrest Gump node has been deleted.
 
